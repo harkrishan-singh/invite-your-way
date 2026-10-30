@@ -1,0 +1,30 @@
+/* Styles for the InviteYourWay landing and fallback pages only. */
+.inviteyourway-home {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 48px 24px;
+  text-align: center;
+  background: var(--cream);
+  color: var(--ink);
+}
+.inviteyourway-home-content { max-width: 650px; }
+.inviteyourway-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  color: var(--walnut);
+}
+.inviteyourway-home h1 {
+  font: 400 clamp(3rem, 8vw, 5.75rem)/1.1 var(--font-serif);
+  margin: 16px 0 24px;
+}
+.inviteyourway-home-content > p:not(.inviteyourway-eyebrow) {
+  font: 400 clamp(1.05rem, 2vw, 1.35rem)/1.55 var(--font-serif);
+  color: var(--muted);
+}
+.inviteyourway-home-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--walnut);
+  text-underline-offset: 5px;
+}

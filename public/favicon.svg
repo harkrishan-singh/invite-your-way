@@ -1,0 +1,52 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="gold" cx="36%" cy="32%" r="72%">
+      <stop offset="0%" stop-color="#f8e7b5"/>
+      <stop offset="38%" stop-color="#e4c15d"/>
+      <stop offset="70%" stop-color="#c4962e"/>
+      <stop offset="100%" stop-color="#8a611c"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Golden wax seal -->
+  <path
+    d="M 100 14
+       Q 112 8.8 122.3 16.9
+       Q 135.2 15 143 25.5
+       Q 156 27 160.8 39.2
+       Q 173 44 174.5 57
+       Q 185 64.8 183.1 77.7
+       Q 191.2 88 186 100
+       Q 191.2 112 183.1 122.3
+       Q 185 135.2 174.5 143
+       Q 173 156 160.8 160.8
+       Q 156 173 143 174.5
+       Q 135.2 185 122.3 183.1
+       Q 112 191.2 100 186
+       Q 88 191.2 77.7 183.1
+       Q 64.8 185 57 174.5
+       Q 44 173 39.2 160.8
+       Q 27 156 25.5 143
+       Q 15 135.2 16.9 122.3
+       Q 8.8 112 14 100
+       Q 8.8 88 16.9 77.7
+       Q 15 64.8 25.5 57
+       Q 27 44 39.2 39.2
+       Q 44 27 57 25.5
+       Q 64 15 77.7 16.9
+       Q 88 8.8 100 14 Z"
+    fill="url(#gold)"
+  />
+
+  <!-- Subtle inner decorative ring -->
+  <circle
+    cx="100"
+    cy="100"
+    r="62"
+    fill="none"
+    stroke="#f6e7b4"
+    stroke-opacity="0.45"
+    stroke-width="1.4"
+  />
+</svg>

@@ -1,0 +1,30 @@
+:root {
+  font-family: 'Instrument Sans', 'Avenir Next', 'Segoe UI', sans-serif;
+  color-scheme: light;
+  --cream: #faf6ee;
+  --paper: #fffaf3;
+  --ink: #342a24;
+  --muted: #7b6b5a;
+  --walnut: #987144;
+  --gold: #c4a16a;
+  --line: rgba(103, 79, 53, 0.15);
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-script: 'Allura', cursive;
+  --font-sans: 'Instrument Sans', 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-caps: var(--font-sans);
+  background: var(--cream);
+  color: var(--ink);
+  font-synthesis: weight style;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body { margin: 0; min-width: 320px; overflow-x: clip; }
+#root { min-height: 100svh; }
+button, input, textarea, select { font-family: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--walnut); outline-offset: 3px; }
+::selection { background: #ead9bb; color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
