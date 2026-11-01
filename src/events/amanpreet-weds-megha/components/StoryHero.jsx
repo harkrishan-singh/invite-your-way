@@ -1,46 +1,73 @@
-import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { photos } from "../data/photos.js";
 import { wedding } from "../data/wedding.js";
 
-const floats = [
+/** Full-screen scale, then a small step down while the side photos arrive. */
+const OPEN = 2.08;
+const EASED = 1.78;
+
+const desktopFloats = [
   {
     src: photos.coast,
     alt: "A beach and cliffs at sunset",
     className: "fp-coast",
-    range: [0.08, 0.28],
-    fromX: -110,
-    fromY: -30,
+    range: [0, 0.38],
+    fromX: -90,
+    fromY: -24,
     rotate: 0,
   },
   {
     src: photos.couple,
     alt: "Dancing on the shore",
     className: "fp-couple is-mono",
-    range: [0.16, 0.36],
-    fromX: -90,
-    fromY: 40,
+    range: [0, 0.38],
+    fromX: -70,
+    fromY: 28,
     rotate: 0,
   },
   {
     src: photos.cliff,
     alt: "A cliff above the water",
     className: "fp-cliff",
-    range: [0.22, 0.42],
-    fromX: 100,
-    fromY: -20,
+    range: [0, 0.38],
+    fromX: 80,
+    fromY: -18,
     rotate: 0,
   },
   {
     src: photos.shoes,
     alt: "Shoes at the edge of a trail",
     className: "fp-shoes",
-    range: [0.28, 0.48],
-    fromX: 110,
-    fromY: 50,
+    range: [0, 0.38],
+    fromX: 90,
+    fromY: 36,
     rotate: 0,
   },
 ];
+
+const phoneFloats = [
+  { ...desktopFloats[0], fromX: -12, fromY: -160 },
+  { ...desktopFloats[1], fromX: 12, fromY: -160 },
+  { ...desktopFloats[2], fromX: -12, fromY: 160 },
+  { ...desktopFloats[3], fromX: 12, fromY: 160 },
+];
+
+function usePhoneLayout() {
+  const [phone, setPhone] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia("(max-width: 700px)").matches,
+  );
+
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 700px)");
+    const update = () => setPhone(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+
+  return phone;
+}
 
 function FloatPhoto({ photo, progress }) {
   const opacity = useTransform(progress, photo.range, [0, 1]);
@@ -64,15 +91,24 @@ function FloatPhoto({ photo, progress }) {
 export default function Hero() {
   const ref = useRef(null);
   const calm = useReducedMotion() === true;
+  const phone = usePhoneLayout();
+  const floats = phone ? phoneFloats : desktopFloats;
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end end"],
+    offset: ["start 8%", "end end"],
+  });
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 280,
+    damping: 36,
+    mass: 0.2,
+    restDelta: 0.0005,
+    skipInitialAnimation: true,
   });
 
-  // Composite a single scale instead of changing width, height, top and left on every scroll frame.
-  const frameScale = useTransform(scrollYProgress, [0, 0.52], [1, 0.81]);
-  const frameRadius = useTransform(scrollYProgress, [0, 0.4], [0, 36]);
-  const hintOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+  // A small shrink while the four photos arrive, then the rest of the shrink once they are in.
+  const frameScale = useTransform(progress, [0, 0.38, 0.46, 0.94], [OPEN, EASED, EASED, 1]);
+  const frameRadius = useTransform(progress, [0, 0.38, 0.46, 0.94], [0, 14, 14, 32]);
+  const hintOpacity = useTransform(progress, [0, 0.08], [1, 0]);
 
   if (calm) {
     return (
@@ -99,6 +135,7 @@ export default function Hero() {
             loading="lazy"
             decoding="async"
           />
+          <motion.div className="hero-scrim" style={{ opacity: hintOpacity }} />
           <motion.div className="explore" style={{ opacity: hintOpacity }}>
             <span className="explore-mark" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -117,7 +154,7 @@ export default function Hero() {
         </motion.div>
 
         {floats.map((photo) => (
-          <FloatPhoto key={photo.className} photo={photo} progress={scrollYProgress} />
+          <FloatPhoto key={photo.className} photo={photo} progress={progress} />
         ))}
       </div>
     </section>
