@@ -204,11 +204,11 @@ export function getInvitation(variant = "wedding") {
       ),
     })),
     menuLinks: [
-      { id: "top", label: "The invitation" },
-      { id: "letter", label: "A note" },
+      { id: "top", label: "The Invitation" },
+      { id: "letter", label: "A Note" },
       { id: "weekend", label: event.scheduleTitle },
-      { id: "place", label: "The venue" },
-      { id: "second-invitation", label: "Our story" },
+      { id: "place", label: "The Venue" },
+      { id: "second-invitation", label: "Our Story" },
     ],
   };
 }
