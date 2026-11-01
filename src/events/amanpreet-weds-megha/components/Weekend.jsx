@@ -1,42 +1,47 @@
-import { Chevron } from './Icons.jsx'
-import { Reveal } from './Reveal.jsx'
+import { Reveal } from "./Reveal.jsx";
 
-function DayCard({ day, open, onToggle }) {
+function DayCard({ day }) {
   return (
-    <article className={`day${open ? ' is-open' : ''}`}>
-      <button
-        type="button"
-        className="day-toggle"
-        aria-expanded={open}
-        aria-controls={`panel-${day.id}`}
-        onClick={onToggle}
-      >
+    <article className="day is-open">
+      <div className="day-toggle">
         <span className="day-title">{day.title}</span>
-        {day.note ? <span className="day-note">{day.note}</span> : null}
-        <Chevron />
-      </button>
-      <div className="day-body" id={`panel-${day.id}`} role="region" aria-hidden={!open}>
+        {day.note && <span className="day-note">{day.note}</span>}
+      </div>
+
+      <div className="day-body">
         <div className="day-body-inner">
-          <ul>
-            {day.items.map((item) => <li key={item}>{item}</li>)}
+          <ul className="day-events">
+            {day.items.map((item, index) => (
+              <li key={`${day.id}-${index}`}>
+                <span className="day-event-title">{item.title}</span>
+                <span className="day-event-time">{item.time}</span>
+              </li>
+            ))}
           </ul>
+
+          <div className="day-venue">
+            <span className="day-venue-label">Location</span>
+            <span className="day-venue-name">{day.location}</span>
+          </div>
         </div>
       </div>
     </article>
-  )
+  );
 }
 
-export default function Weekend({ event, openDay, onToggle }) {
+export default function Weekend({ event }) {
   return (
     <section className="sheet section" id="weekend">
-      <Reveal><p className="kicker">{event.scheduleTitle}</p></Reveal>
+      <Reveal>
+        <p className="kicker">{event.scheduleTitle}</p>
+      </Reveal>
       <div className="days">
         {event.schedule.map((day, index) => (
           <Reveal key={day.id} delay={index * 35}>
-            <DayCard day={day} open={openDay === day.id} onToggle={() => onToggle(day.id)} />
+            <DayCard day={day} />
           </Reveal>
         ))}
       </div>
     </section>
-  )
+  );
 }
