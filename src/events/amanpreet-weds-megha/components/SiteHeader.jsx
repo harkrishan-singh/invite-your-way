@@ -6,6 +6,7 @@ export default function SiteHeader({
   scrolled,
   onMenu,
   onTop,
+  onRsvp,
   locked
 }) {
   return (
@@ -32,16 +33,25 @@ export default function SiteHeader({
       </button>
 
       {/* Navigation menu */}
-      <button
-        type="button"
-        className="header-menu"
-        aria-label="Open navigation menu"
-        onClick={onMenu}
-      >
-        <span />
-        <span />
-        <span />
-      </button>
+      <div className="header-actions">
+        <button
+          type="button"
+          className="header-rsvp"
+          onClick={onRsvp}
+        >
+          Submit RSVP
+        </button>
+        <button
+          type="button"
+          className="header-menu"
+          aria-label="Open navigation menu"
+          onClick={onMenu}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
     </header>
   )
 }

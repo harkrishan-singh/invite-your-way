@@ -1,5 +1,5 @@
 .story-invite .hero-scroll {
-  height: 195svh;
+  height: 168svh;
   position: relative;
 }
 
@@ -28,17 +28,23 @@
 
 .story-invite .hero-frame {
   position: absolute;
+  top: 8%;
+  left: 25%;
+  width: 50%;
+  height: 80%;
   overflow: hidden;
   z-index: 1;
+  transform: scale(2.08);
+  transform-origin: center center;
   box-shadow: 0 18px 50px rgba(47, 36, 27, 0.12);
 }
 
-.story-invite .hero-frame::after {
-  content: "";
+.story-invite .hero-scrim {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 1;
   height: 22%;
   background: linear-gradient(to top, rgba(20, 12, 8, 0.38), transparent);
   pointer-events: none;
@@ -81,35 +87,35 @@
 }
 
 .story-invite .fp-coast {
-  left: 1.6%;
-  top: 2.2%;
-  width: 28%;
-  aspect-ratio: 5 / 4;
-  border-radius: 26px;
+  left: 1.5%;
+  top: 10%;
+  width: 30%;
+  aspect-ratio: 16 / 10;
+  border-radius: 22px;
 }
 
 .story-invite .fp-couple {
-  left: 4%;
-  top: 43%;
-  width: 23%;
-  aspect-ratio: 3 / 2;
-  border-radius: 22px;
+  left: 3%;
+  top: 44%;
+  width: 20%;
+  aspect-ratio: 16 / 10;
+  border-radius: 18px;
 }
 
 .story-invite .fp-cliff {
-  left: 79%;
-  top: 28%;
-  width: 16%;
-  aspect-ratio: 4 / 3;
-  border-radius: 22px;
+  right: 1.6%;
+  top: 26%;
+  width: 20%;
+  aspect-ratio: 3 / 2;
+  border-radius: 18px;
 }
 
 .story-invite .fp-shoes {
-  left: 66%;
-  top: 57%;
-  width: 29%;
+  right: 1%;
+  top: 52%;
+  width: 28%;
   aspect-ratio: 4 / 3;
-  border-radius: 26px;
+  border-radius: 22px;
 }
 
 .story-invite .invite-line {
@@ -169,11 +175,11 @@
 }
 
 .story-invite .chapter-copy.left {
-  right: calc(50% + 148px);
+  right: calc(50% + 200px);
 }
 
 .story-invite .chapter-copy.right {
-  left: calc(50% + 148px);
+  left: calc(50% + 200px);
 }
 
 .story-invite .chapter-copy h3 {
@@ -197,7 +203,7 @@
   position: absolute;
   left: 50%;
   top: 44%;
-  width: min(210px, 30vw);
+  width: min(340px, 36vw);
   height: 46vh;
   transform: translateX(-50%);
 }
@@ -285,7 +291,7 @@
   top: auto;
   left: auto;
   right: auto;
-  width: min(220px, 100%);
+  width: min(320px, 100%);
 }
 
 .story-invite .join, .story-invite .venue{
@@ -483,31 +489,51 @@
 }
 
 @media (max-width: 700px) {
+.story-invite .hero-frame {
+    top: 24.5%;
+    left: 4%;
+    width: 92%;
+    height: 57%;
+  }
+
 .story-invite .fp-coast {
-    left: 2%;
-    top: 10%;
-    width: 32%;
+    left: 4%;
+    right: auto;
+    top: 9.5%;
+    bottom: auto;
+    width: 44%;
+    aspect-ratio: 16 / 10;
+    border-radius: 18px;
   }
 
 .story-invite .fp-couple {
-    left: 4%;
-    top: 52%;
-    width: 26%;
+    left: auto;
+    right: 4%;
+    top: 9.5%;
+    bottom: auto;
+    width: 44%;
+    aspect-ratio: 16 / 10;
+    border-radius: 18px;
   }
 
 .story-invite .fp-cliff {
-    left: auto;
-    right: 3%;
-    top: 20%;
-    width: 26%;
+    left: 4%;
+    right: auto;
+    top: auto;
+    bottom: 3.5%;
+    width: 44%;
+    aspect-ratio: 16 / 10;
+    border-radius: 18px;
   }
 
 .story-invite .fp-shoes {
     left: auto;
-    right: 2%;
+    right: 4%;
     top: auto;
-    bottom: 4%;
-    width: 32%;
+    bottom: 3.5%;
+    width: 44%;
+    aspect-ratio: 16 / 10;
+    border-radius: 18px;
   }
 
 .story-invite .still-chapter{
@@ -535,7 +561,7 @@
 
 .story-invite .deck {
     top: 58%;
-    width: min(210px, 64vw);
+    width: min(340px, 86vw);
   }
 
 .story-invite .story-title {

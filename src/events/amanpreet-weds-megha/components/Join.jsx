@@ -40,7 +40,7 @@ export default function Join({ event }) {
 
   return (
     <>
-      <section className="join" aria-label={`${event.label} date`}>
+      <section className="join" id="rsvp" aria-label={`${event.label} date`}>
         <motion.p className="invite-kicker" {...rise}>
           Together with our families, <span className="invite-break">we invite you...</span>
         </motion.p> <motion.h2 className="invite-date" {...rise}>{event.joinDateLabel}</motion.h2>

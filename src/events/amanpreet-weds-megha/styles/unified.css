@@ -96,6 +96,16 @@
 
 
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-rsvp {
+  display: none;
+}
+
 .header-menu {
   justify-self: end;
   width: 44px;
@@ -431,14 +441,12 @@
 }
 
 .story-invite .hero-scroll {
-  height: 195svh;
+  height: 168svh;
 }
 
 .story-invite .hero-frame {
-  inset: 0;
-  transform-origin: center;
+  transform-origin: center center;
   will-change: transform;
-  border-radius: 0;
 }
 
 .story-invite .hero-still {
@@ -614,7 +622,7 @@
   }
 
   .story-invite .hero-scroll {
-    height: 190svh;
+    height: 160svh;
   }
 
   .story-invite .story {
@@ -626,11 +634,76 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .site-header {
-    height: 66px;
-    padding-inline: 18px;
+    top: 10px;
+    height: auto;
+    margin: 10px 12px 0;
+    padding: 7px 8px 7px 10px;
+    border: 0;
+    border-radius: 999px;
+    background: #fffaf3;
+    box-shadow: 0 10px 28px rgba(47, 36, 27, 0.1);
+    z-index: 30;
   }
+
+  .site-header.is-stuck {
+    background: #fffaf3;
+    box-shadow: 0 10px 28px rgba(47, 36, 27, 0.1);
+  }
+
+  .site-header .header-home {
+    width: auto;
+    height: 42px;
+    flex: 0 0 auto;
+    flex-basis: auto;
+    padding: 0 16px;
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: inset 0 0 0 1px rgba(47, 36, 27, 0.08);
+  }
+
+  .header-home-seal {
+    display: none;
+  }
+
+  .header-home-letters {
+    position: static;
+    color: #342a24;
+    font: 500 15px / 1 var(--font-sans);
+    letter-spacing: 0.04em;
+  }
+
+  .site-header .header-rsvp {
+    display: inline-flex;
+    align-items: center;
+    height: 42px;
+    padding: 0 16px;
+    border-radius: 999px;
+    background: #7a5a32;
+    color: #fffaf3;
+    font: 500 14px / 1 var(--font-sans);
+  }
+
+  .header-menu {
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .header-menu span,
+  .header-menu span:nth-child(2) {
+    width: 18px;
+    height: 2px;
+  }
+
+  .header-menu span:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
 
   .classic-invite #place {
     margin-bottom: 60px;
@@ -640,21 +713,6 @@
   .classic-invite #weekend {
     margin-bottom: 60px;
   }
-
-  .header-home,
-  .header-home-seal {
-    width: 44px;
-    height: 44px;
-  }
-
-  .header-home {
-    flex-basis: 44px;
-  }
-
-  .header-home-letters {
-    font-size: 24px;
-  }
-
 
   .classic-invite .hero {
     min-height: calc(100svh - 66px);
@@ -700,7 +758,7 @@
   }
 
   .story-invite .hero-scroll {
-    height: 165svh;
+    height: 150svh;
   }
 
   .story-invite .story {

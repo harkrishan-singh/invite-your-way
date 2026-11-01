@@ -105,6 +105,7 @@ export default function AmanpreetMeghaSite({ page = 'wedding' }) {
           locked={!isOpen}
           onMenu={() => setMenuOpen(true)}
           onTop={() => navigateTo('top')}
+          onRsvp={() => navigateTo('rsvp')}
         />
         <main>
           <div className="classic-invite" id="top">
